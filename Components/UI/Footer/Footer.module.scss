@@ -1,0 +1,113 @@
+.footerSection { 
+  background: #222844;
+
+    .footerWrapper {
+      padding: 40px 0;
+    
+        border-top: 1px solid var(--dark-outline-variant); 
+        border-bottom: 1px solid var(--dark-outline-variant); 
+
+        display: grid;
+        gap: 40px;
+        justify-content: space-between;
+        grid-template-columns: 400px auto auto;
+     
+    
+        @media (max-width: 1000px) {
+          gap: 32px;
+        grid-template-columns: 300px auto auto;
+        }
+       
+        @media (max-width: 800px) {
+          gap: 40px;
+        grid-template-columns: 1fr 1fr ;
+        }
+        @media (max-width: 500px) {
+          gap: 24px;
+          grid-template-columns: 1fr;
+        }
+        .chipText{ 
+          background: rgba(255, 255, 255, 0.12); 
+                      text-align: center;
+                      padding: 8px 16px; 
+                      border: 2px solid rgba(255, 255, 255, 1);
+                      border-radius: 12px;
+
+        }
+        .linksContainer {
+          .menuList {
+            list-style: none !important;
+            
+            .link {
+              display: block;
+              margin: 0;
+              padding: 6px 0;
+              color: var(--dark-on-surface-variant);
+              &:hover {
+                color: var(--dark-primary);
+              }
+            }
+          }
+        }
+
+        
+  .contactWrapper {
+    /* @media (max-width: 900px) {
+      grid-column: span 2;
+    } */
+
+    .socialWrapper {
+      margin-top: 24px;
+      .social-links {
+        .link {
+          margin: 0 8px 0 0;
+          &:hover {
+            svg {
+              path {
+                fill: var(--dark-secondary);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+      }
+}
+
+.contactInfoWrapper{ 
+   .flex{ }
+}
+
+.copyrightWrapper{ 
+    background: #222844;
+
+span{ 
+  color: var(--dark-on-surface-variant)
+}
+div{ 
+        color: var(--dark-on-surface-variant); 
+
+}
+  .webduelLabel{ 
+    color: var(--dark-primary); 
+    text-decoration: underline;
+    .duel{ 
+      font-weight: 700;
+    }
+  }
+}
+
+.fabPhone{ 
+
+  position: fixed !important; 
+  bottom: 80px !important; /* Adjust vertical position */
+  right: 8px;
+  width: 60px !important; 
+  height: 60px !important; 
+background: var(--primary-gradient, linear-gradient(90deg, #48EAF0 0%, #67FFC0 100%));
+
+  @media(min-width: 900px) {
+    display: none !important;
+  }
+}
