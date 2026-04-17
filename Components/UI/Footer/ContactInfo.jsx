@@ -9,7 +9,7 @@ import Image from "next/image";
 import styles from "./Footer.module.scss";
 import Fab from '@mui/material/Fab';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-export default function ContactInfo({ contactInfo, className }) {
+export default function ContactInfo({ contactInfo, className, lightBG }) {
   
   if (contactInfo?.info?.length === 0) return null;
   const infoComponent = contactInfo?.info?.map((info, index) => {
@@ -19,7 +19,7 @@ export default function ContactInfo({ contactInfo, className }) {
           {/* <Image src={info.icon.url} alt={info.icon.alt} width={info.icon.width} height={info.icon.height} /> */}
    
 
-          <div className={`footer-contact-label dark-body2`}  dangerouslySetInnerHTML={{ __html: info.label }}></div>
+          <div className={`footer-contact-label  ${lightBG ? 'body2' : 'dark-body2'}`}  dangerouslySetInnerHTML={{ __html: info.label }}></div>
    
       </Link>
     );
@@ -27,7 +27,7 @@ export default function ContactInfo({ contactInfo, className }) {
   return (
     <>
     <div className={`${className} ${styles.contactInfoWrapper} footer-contact-wrapper flex flex-column gap-8`}>
-      <Typography variant="subtitle1" component="div" sx={{ marginBottom: "8px" }} color={"var(--dark-on-surface)"} >
+      <Typography variant="subtitle1" component="div" sx={{ marginBottom: "8px" }} color={lightBG ? "var(--light-on-surface)" : "var(--dark-on-surface)"} >
         Contact
       </Typography>
       {infoComponent}

@@ -106,7 +106,7 @@ export default function Input({
      
         fullWidth={true}
       >
-        <InputLabel id="multiple-checkbox-label" sx={{ width: "100%" }}           color={"secondary"}
+        <InputLabel id="multiple-checkbox-label" sx={{ width: "100%" }}           color={"primary"}
 >
           {label}
         </InputLabel>
@@ -118,7 +118,7 @@ export default function Input({
           value={value}
           onChange={onChange}
           input={<OutlinedInput label={label} />}
-          color={"secondary"}
+          color={"primary"}
           renderValue={
             multipleValue
               ? (selected) => selected.join(", ")
@@ -129,7 +129,7 @@ export default function Input({
           {options.map((option, index) => (
             <MenuItem key={index} value={option.value}>
               <Checkbox
-                        color={"secondary"}
+                        color={"primary"}
 
                 checked={value.indexOf(option.value) > -1}
               />
@@ -251,7 +251,7 @@ export default function Input({
               label={option.label}
               onClick={() => handleChipClick(option.value)}
               variant={value.includes(option.value) ? "filled" : "outlined"}
-              color="secondary"
+              color="primary"
             />
           ))}
         </div>
@@ -264,13 +264,13 @@ export default function Input({
   else if(type==="datePicker"){
     return           <FormControl
       fullWidth
-                color="secondary"
+                color="primary"
 
       required={required}
       error={required ? isInvalid : null}
       sx={{ marginTop: removeMargin ? "0" : "24px", position: "relative" }}
     >
-      <LocalizationProvider dateAdapter={AdapterDayjs}           color="secondary"
+      <LocalizationProvider dateAdapter={AdapterDayjs}           color="primary"
 >
         <DatePicker
           label={label}
@@ -281,10 +281,10 @@ export default function Input({
           open={open}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
-          color="secondary"
+          color="primary"
           slotProps={{
             textField: {
-              color: "secondary",
+              color: "primary",
               variant: "outlined",
               fullWidth: true,
               helperText: isInvalid ? errorMessage : "",
@@ -307,7 +307,7 @@ export default function Input({
             e.stopPropagation();
             onChange(null);
           }}
-          color={"secondary"}
+          color={"primary"}
           sx={{
             position: "absolute",
             right: 44,         // leave space for the calendar icon (~48px)
@@ -316,7 +316,7 @@ export default function Input({
             zIndex: 1,
           }}
         >
-          <ClearIcon fontSize="small" color={"secondary"}
+          <ClearIcon fontSize="small" color={"primary"}
 />
         </IconButton>
       ) : null}
@@ -339,7 +339,7 @@ export default function Input({
         onChange={onChange}
         onBlur={onBlur}
         required={required}
-        color="secondary"
+        color="primary"
         variant="outlined"
      name={id}
      id={id}

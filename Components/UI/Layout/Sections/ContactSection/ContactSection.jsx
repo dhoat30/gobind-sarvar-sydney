@@ -14,26 +14,25 @@ export default function ContactSection({title, description, map, contactInfo, us
                     <Typography variant="h2" component="h1" className="">
                         {title}
                         </Typography>
-                        <Typography variant="subtitle1" component="p" className="mt-8">
+                        <Typography variant="subtitle1" component="p" className="mt-8 regular">
                         {description}
                         </Typography>
                         <div className={`${styles.contactInfo} mt-8`}>
-                        <ContactInfo contactInfo={contactInfo} />
+                        <ContactInfo contactInfo={contactInfo} lightBG={true} className="mt-24"/>
                         </div>
-                        <div className={`${styles.socialWrapper} mt-8`}>
+                        {/* <div className={`${styles.socialWrapper} mt-8`}>
                             <SocialWrapper socialData={socialData} />
-                            </div>
+                            </div> */}
 
                 </div>
                 <Paper className={`${styles.contactFormWrapper}`} variant='outlined'>
                     <ContactForm/> 
-
                     </Paper> 
 
                     
       </Container>
       
-      <div dangerouslySetInnerHTML={{ __html: map }} className='mt-40'/> 
+      {/* <div dangerouslySetInnerHTML={{ __html: map }} className='mt-40'/>  */}
     </section>
   )
 }

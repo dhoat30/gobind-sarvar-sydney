@@ -182,9 +182,9 @@ function DesktopNavbar(props) {
             >
               {menuItems}
             </Box>
-            <Link href="/get-free-quote" className="quote-link">
-              <Button size="large" variant="contained" className="quote-button">
-                GET FREE QUOTE
+            <Link href="https://tally.so/r/w5PEQQ" className="quote-link">
+              <Button size="large" variant="contained">
+              Enrol Now
               </Button>
             </Link>
           </div>

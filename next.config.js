@@ -1,4 +1,4 @@
-const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+const protocol = process.env.NODE_ENV === "production" ? "https" : "https";
 
 const normalizeUrl = (value, fallbackProtocol) => {
   if (!value) {
@@ -15,15 +15,15 @@ const normalizeUrl = (value, fallbackProtocol) => {
 const cmsUrl = normalizeUrl(
   process.env.NEXT_PUBLIC_CMS_URL ||
     (process.env.NODE_ENV === "production"
-      ? "gobindsarvar.com.au"
-      : "gobind-sarvar-sydney.local"),
+      ? "cms.gobindsarvar.nsw.edu.au"
+      : "cms.gobindsarvar.nsw.edu.au"),
   protocol,
 );
 
 const baseUrl = normalizeUrl(
   process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.NODE_ENV === "production"
-      ? "gobindsarvar.com.au"
+      ? "gobindsarvar.nsw.edu.au"
       : "localhost:3000"),
   protocol,
 );
@@ -44,11 +44,12 @@ const nextConfig = {
     },
     images: {
         remotePatterns: [{
-            protocol: "http",
-            hostname: "gobind-sarvar-sydney.local",
+            protocol: "https",
+            hostname: "cms.gobindsarvar.nsw.edu.au",
             port: '',
             pathname: '/**',
         },
+        
         {
             protocol: 'https',
             hostname: 'lh3.googleusercontent.com',
@@ -62,6 +63,21 @@ const nextConfig = {
         siteUrl: baseUrl,
         siteName: siteName,
     },
+    // add redirects for old routes
+    async redirects() {
+        return [
+            {
+                source: '/get-free-quote',
+                destination: 'https://tally.so/r/w5PEQQ',
+                permanent: true,
+            },
+              {
+                source: '/enrol-now',
+                destination: 'https://tally.so/r/w5PEQQ',
+                permanent: true,
+            },
+        ] 
+      } 
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

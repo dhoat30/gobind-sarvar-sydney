@@ -14,11 +14,11 @@ const getData = async (endpoint, urlPrefix) => {
 };
 
 // const getBlogsData = () => getData('https://cms.liftandshiftmovers.com.au/wp-json/wp/v2/posts?acf_format=standard&per_page=100', "blogs");
-const getLocalRemovalists = () => getData('https://cms.primemovers.co.nz/wp-json/wp/v2/removalists?acf_format=standard&per_page=100', "movers");
-const getInterstateRemovalists = () => getData('https://cms.primemovers.co.nz/wp-json/wp/v2/intercity-movers?acf_format=standard&per_page=100', "intercity-movers");
+const getLocalRemovalists = () => getData('https://cms.gobindsarvar.nsw.edu.au/wp-json/wp/v2/news?acf_format=standard&per_page=100', "news");
+const getInterstateRemovalists = () => getData('https://cms.gobindsarvar.nsw.edu.au/wp-json/wp/v2/upcoming-event?acf_format=standard&per_page=100', "upcoming-events");
 
 module.exports = {
-    siteUrl: isProd ? 'https://primemovers.co.nz' : 'http://localhost:3000',
+    siteUrl: isProd ? 'https://gobindsarvar.nsw.edu.au' : 'http://localhost:3000',
     generateRobotsTxt: true,
     sitemapSize: 1000,
     exclude: [ '/thank-you', '/order-received', '/checkout', '/form-submitted/thank-you'],

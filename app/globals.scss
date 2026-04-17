@@ -402,11 +402,12 @@ ul {
 .body1 p,
 .body1 strong {
   margin: 8px 0 8px 0;
-  font-weight: 400;
+  letter-spacing: -0.05px;
+  font-weight: 300 !important;
   color: var(--light-on-surface-variant);
   font-family: var(--font-work-sans), Segoe UI, sans-serif;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .body1 strong {
@@ -426,7 +427,7 @@ ul {
   position: relative;
   color: var(--light-on-surface);
   margin: 8px 0;
-  font-weight: 500;
+  font-weight: 300;
 
   strong {
     color: var(--light-on-surface);
@@ -929,9 +930,9 @@ strong {
   h2 strong {
     font-size: 2rem;
     margin-top: 32px;
-
+    line-height: 120%;
   }
-
+  p{ }
   h3 {
     margin-top: 24px;
   }
@@ -1027,6 +1028,7 @@ strong {
         min-height: 40px;
         padding: 0 16px;
         border-radius: 10px;
+        position: relative;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -1053,8 +1055,20 @@ strong {
       .nav-link.active,
       .nav-parent.active {
         color: var(--light-primary);
-        background: rgba(13, 42, 91, 0.07);
-        box-shadow: inset 0 -2px 0 var(--light-primary);
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .nav-link.active::after,
+      .nav-parent.active::after {
+        content: "";
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 6px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--light-primary);
       }
 
       .arrow {
@@ -1100,22 +1114,6 @@ strong {
   .quote-link {
     display: inline-flex;
     flex-shrink: 0;
-  }
-
-  .quote-button {
-    min-height: 42px;
-    padding-right: 20px !important;
-    padding-left: 20px !important;
-    font-size: 0.88rem !important;
-    letter-spacing: 0.02em;
-    font-weight: 700 !important;
-    box-shadow: none !important;
-    transition: background-color 0.24s ease !important;
-    border-radius: 12px !important;
-
-    &:hover {
-      box-shadow: none !important;
-    }
   }
 
   .sublinks-container {

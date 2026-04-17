@@ -222,15 +222,14 @@ export default function MobileNavbar(props) {
             </IconButton>
           </DrawerHeader>
           <ul className="list-container">{menuItems}</ul>
-          <Link href="/get-free-quote" style={{ margin: "16px" }}>
+          <Link href="https://tally.so/r/w5PEQQ" style={{ margin: "16px" }}>
             <Button
               size="large"
               variant="outlined"
-              className="button"
               onClick={handleDrawerClose}
               sx={{ width: "100%" }}
             >
-              GET FREE QUOTE
+              Enrol Now
             </Button>
           </Link>
         </Drawer>

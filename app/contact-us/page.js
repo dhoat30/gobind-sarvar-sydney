@@ -48,8 +48,11 @@ export async function generateMetadata(props, parent) {
 }
 
 export default async function Home() {
-  const data = await getSinglePostData("contact-us", "/wp-json/wp/v2/pages");
+  const data = await getSinglePostData("contact-us", "wp-json/wp/v2/pages");
   const options = await getOptions();
+    console.log("Sections:", data);
+   
+
   // const googleReviews = await getGoogleReviews()
   if (!data) return { notFound: true };
   const sections = data[0]?.acf?.sections;
@@ -72,7 +75,7 @@ export default async function Home() {
         {/* <GoogleReviewsCarousel data={googleReviews} /> */}
       </main>
       <Footer
-        showFooterCta={true}
+        showFooterCta={false}
         className="mt-32"
         footerCtaData={options.footer_cta}
         contactInfo={options.contact_info}

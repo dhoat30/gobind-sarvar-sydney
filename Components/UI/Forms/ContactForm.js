@@ -15,7 +15,7 @@ import GoogleAutocomplete from "@/Components/GoogleMaps/GoogleAutoComplete";
 import styles from "./FormStyle.module.scss";
 export default function ContactForm({
   className,
-  formName = "Get a Quote Form",
+  formName = "Contact Us Form",
   title = "",
   hideTitle = false,
 }) {
@@ -142,7 +142,7 @@ export default function ContactForm({
     //     }
     // }
 
-    Promise.all([axios(configHubspot), axios(configSendMail)])
+    Promise.all([axios(configSendMail)])
       .then(function (response) {
         if (response[0].status === 200) {
           setIsLoading(false);

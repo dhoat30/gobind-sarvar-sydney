@@ -24,7 +24,8 @@ const buildUrl = (baseUrl, path) => {
 
 const cmsBaseUrl = ensureAbsoluteBaseUrl(process.env.url);
 const siteBaseUrl = ensureAbsoluteBaseUrl(process.env.siteUrl);
-
+console.log("CMS Base URL:", cmsBaseUrl);
+console.log("Site Base URL:", siteBaseUrl);
 //get single post with slug
 export const getSinglePostData = async (slug, apiRoute) => {
   console.log("Fetching from API:", slug);
