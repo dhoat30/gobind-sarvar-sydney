@@ -7,7 +7,7 @@ import Header from "@/Components/UI/Header/Header";
 import PayWayDonationForm from "@/Components/Pages/DonationPage/PayWayDonationForm";
 import { getOptions } from "@/utils/fetchData";
 import styles from "./page.module.scss";
-
+import Button from "@mui/material/Button";
 export const metadata = {
   title: "Donate Now",
   description:
@@ -36,14 +36,18 @@ export default async function DonateNowPage() {
           title="Donate Now"
           description="Support Gobind Sarvar Sydney through a direct bank transfer."
         />
-<a target="_blank" href="https://www.payway.com.au/SignUp?ClientNumber=Q32081&Frequency=VARIABLE&AddressRequired=false&CustomerNumber=&CustomerName=">Sign Up Now</a>
-      <br></br>
-      <a target="_blank" href="https://www.payway.com.au/RegularSignUp?ClientNumber=Q32081&AddressRequired=false&CustomerNumber=&CustomerName=&FirstPaymentDate=">Recurring Donation</a>
+        <div className="flex justify-center mt-40">
+             <Button target="_blank" component="a" variant="contained" color="primary" href="https://www.payway.com.au/SignUp?ClientNumber=Q32081&Frequency=VARIABLE&AddressRequired=false&CustomerNumber=&CustomerName=">
+        Recurring Donation
+        </Button>
+    
+        </div>
+     
         <section className={styles.section}>
           <Container maxWidth="lg">
-            <div className={styles.paymentGrid}>
+            {/* <div className={styles.paymentGrid}>
               <PayWayDonationForm publishableApiKey={paywayPublishableKey} />
-            </div>
+            </div> */}
 
             <div className={styles.content}>
               <div className={styles.intro}>
