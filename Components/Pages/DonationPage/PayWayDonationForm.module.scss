@@ -1,0 +1,137 @@
+.paymentCard {
+  background: var(--material-theme--white);
+  border: 1px solid var(--light-outline-variant);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(13, 42, 91, 0.08);
+  padding: 24px;
+
+  h3 {
+    color: var(--light-primary);
+    font-family: var(--font-prompt), var(--font-work-sans), Segoe UI, sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.3;
+    margin-bottom: 18px;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+
+  > span:first-child {
+    color: var(--light-on-surface-variant);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+}
+
+.amountInput {
+  align-items: center;
+  border: 1px solid var(--light-outline-variant);
+  border-radius: 8px;
+  display: flex;
+  min-height: 52px;
+  padding: 0 16px;
+
+  span {
+    color: var(--light-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  input {
+    background: transparent;
+    border: 0;
+    color: var(--light-on-surface);
+    flex: 1;
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    min-width: 0;
+    outline: 0;
+    padding: 14px 8px;
+  }
+}
+
+.amountButtons {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+
+  button {
+    background: var(--light-surface-container-low);
+    border: 1px solid var(--light-outline-variant);
+    border-radius: 8px;
+    color: var(--light-primary);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    min-height: 44px;
+  }
+
+  button[aria-pressed="true"] {
+    background: var(--light-primary);
+    border-color: var(--light-primary);
+    color: var(--light-on-primary);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cardFrame {
+  border: 1px solid var(--light-outline-variant);
+  border-radius: 8px;
+  min-height: 170px;
+  padding: 14px;
+}
+
+.submitButton {
+  background: var(--light-primary);
+  border: 0;
+  border-radius: 8px;
+  color: var(--light-on-primary);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 52px;
+  padding: 0 20px;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.helperText,
+.status,
+.receipt {
+  color: var(--light-on-surface-variant);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.status {
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.success {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+.error {
+  background: #ffebee;
+  color: #b71c1c;
+}
+
+.receipt {
+  font-weight: 700;
+}

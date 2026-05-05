@@ -16,6 +16,7 @@ export const headerLinks = [
     url: "https://tally.so/r/mKK8Zg",
   },
   { label: "High School", url: "/high-school" },
+  { label: "Donate Now", url: "/donate-now" },
 
   { label: "Contact Us", url: "/contact-us" },
 ];
