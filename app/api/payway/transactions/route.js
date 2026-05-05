@@ -5,10 +5,51 @@ const secretApiKey =
   process.env.WESTPAC_SECRET_KEY ||
   process.env.WESTPAC_PAYWAY_SECRET_KEY ||
   process.env.PAYWAY_SECRET_KEY;
+  
 const merchantId =
   process.env.WESTPAC_MERCHANT_ID ||
   process.env.WESTPAC_PAYWAY_MERCHANT_ID ||
   process.env.PAYWAY_MERCHANT_ID;
+const isDevelopment = process.env.NODE_ENV !== "production";
+
+function buildDebugResponse(response, data) {
+  if (!isDevelopment) {
+    return undefined;
+  }
+
+  return {
+    httpStatus: response.status,
+    httpStatusText: response.statusText,
+    body: data,
+  };
+}
+
+function parsePayWayResponse(responseText) {
+  if (!responseText) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(responseText);
+  } catch {
+    return { rawBody: responseText };
+  }
+}
+
+function getPayWayMessage(data) {
+  if (data?.responseText) {
+    return data.responseText;
+  }
+
+  if (Array.isArray(data?.data) && data.data.length > 0) {
+    return data.data
+      .map((item) => [item.fieldName, item.message].filter(Boolean).join(": "))
+      .filter(Boolean)
+      .join(" ");
+  }
+
+  return "Payment was not approved.";
+}
 
 function getCustomerIpAddress(request) {
   const forwardedFor = request.headers.get("x-forwarded-for");
@@ -86,15 +127,30 @@ export async function POST(request) {
       },
       body: formData,
     });
+    const responseText = await response.text();
+    const data = parsePayWayResponse(responseText);
+    const paywayDebug = buildDebugResponse(response, data);
 
-    const data = await response.json().catch(() => ({}));
+    console.log(
+      "PayWay API response:",
+      JSON.stringify(
+        {
+          httpStatus: response.status,
+          httpStatusText: response.statusText,
+          body: data,
+        },
+        null,
+        2,
+      ),
+    );
 
     if (!response.ok || data.status === "declined" || data.status === "suspended") {
       return NextResponse.json(
         {
           success: false,
-          message: data.responseText || "Payment was not approved.",
+          message: getPayWayMessage(data),
           transaction: data,
+          payway: paywayDebug,
         },
         { status: response.ok ? 402 : response.status },
       );
@@ -107,6 +163,7 @@ export async function POST(request) {
         status: data.status,
         transactionId: data.transactionId,
       },
+      payway: paywayDebug,
     });
   } catch (error) {
     console.error("PayWay payment error", error);

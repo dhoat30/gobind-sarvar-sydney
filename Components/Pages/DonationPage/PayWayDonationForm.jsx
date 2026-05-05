@@ -101,6 +101,12 @@ export default function PayWayDonationForm({ publishableApiKey }) {
 
     const data = await response.json();
 
+    console.log("PayWay transaction response:", {
+      httpStatus: response.status,
+      httpStatusText: response.statusText,
+      body: data,
+    });
+
     if (!response.ok || !data.success) {
       throw new Error(data.message || "Payment could not be processed.");
     }
@@ -121,6 +127,7 @@ export default function PayWayDonationForm({ publishableApiKey }) {
 
     frameRef.current.getToken(async (error, data) => {
       if (error) {
+        console.error("PayWay token error:", error);
         setStatus({
           type: "error",
           message: error.message || "Unable to securely tokenise the card.",
@@ -130,6 +137,11 @@ export default function PayWayDonationForm({ publishableApiKey }) {
       }
 
       try {
+        console.log("PayWay token created:", {
+          singleUseTokenId: data.singleUseTokenId,
+          paymentMethod: data.paymentMethod,
+          creditCard: data.creditCard,
+        });
         const result = await submitPayment(data.singleUseTokenId);
         setReceipt(result.transaction);
         setStatus({
